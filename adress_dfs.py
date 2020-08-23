@@ -21,7 +21,7 @@ N = int(input())
 # list 형태로 input을 받은것을 int로 변환해주고 그것을 List 형태로 n번 받는다
 #즉 이차원 배열
 matrix = [list(map(int, list(input()))) for _ in range(N)]
-queue = [] # bfs 탐색을 위한 큐
+queue = [] # dfs 탐색을 위한 큐
 visit = [[False]* N for _ in range(N)] # 방문처리를 위한 배열
 comp = [] # 단지 수를 체크할 배열
 

@@ -28,8 +28,7 @@ matrix = [[0] * (m) for _ in range(n)]
 
 
 
-for _ in range(n):
-        matrix[_] = map(int, input().split())
+a = [list(map(int, list(input()))) for _ in range(n)]
 
 print(matrix)
 

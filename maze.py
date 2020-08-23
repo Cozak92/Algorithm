@@ -4,19 +4,19 @@
 
 def bfs():
     queue = []
-    queue.append([0,0])
-    visit[0][0] = True
-    dist [0][0] = 1
+    queue.append([0,0]) # 좌표를 큐에 담아 BFS 탐색
+    visit[0][0] = True # 방문했는지 체크
+    dist [0][0] = 1 #거리 체크용
 
     while len(queue) != 0:
-        x, y= queue.pop(0)
+        x, y= queue.pop(0) #큐에 있는 맨 첫번째 요소르 뺌
         for k in range(4):
-            nx, ny = x+dx[k], y+dy[k]
-            if 0 <= nx < n and 0 <= ny < m:
-                if visit[nx][ny] == False and matrix[nx][ny] == 1:
-                    queue.append((nx,ny))
-                    dist[nx][ny] = dist[x][y] + 1
-                    visit[nx][ny] = True
+            nx, ny = x+dx[k], y+dy[k] # 좌표 값 게산
+            if 0 <= nx < n and 0 <= ny < m: # 인덱스 범위를 넘어서면 안되므로 예외처리 
+                if visit[nx][ny] == False and matrix[nx][ny] == matrix[x][y]: #만약 방문 한적없고 해당 좌표값이 1이라면 이동할수 있다.
+                    queue.append((nx,ny)) # 방문할 수있는 좌표값을 넣어준다
+                    dist[nx][ny] = dist[x][y] + 1 # 그리고 해당 거리까지 가는 거리는 현재 까지 거리의 +1
+                    visit[nx][ny] = True # 해당좌표를 방문 처리해준다.
 
     return dist[n-1][m-1]
 

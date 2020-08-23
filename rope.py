@@ -1,3 +1,5 @@
+#백준 2217
+
 import sys
 
 def ropes(arr):

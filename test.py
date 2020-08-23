@@ -4,4 +4,4 @@ visit = [False]*K
 
 cnt = [0]*K
 
-print(cnt)
+print(7/2, 7//2)
