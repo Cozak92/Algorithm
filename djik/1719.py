@@ -30,8 +30,9 @@ def checkRoutes(where,end,distFee,cities):
                 #print("end : ", end)
                 if (checking,end) not in checkList:
                     checkList.append((checking,end))
+                
                     q.append(checking)
-
+    print(checkList)
     for e, v in checkList:
         if e == start:
             count += 1
