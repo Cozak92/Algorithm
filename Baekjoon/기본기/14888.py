@@ -32,6 +32,8 @@ def calculating(index,calculations,numbers,calculation):
 
     return MAXResult,MINResult
     
+
+calculating(index,calculating,numbers)
    
 
 

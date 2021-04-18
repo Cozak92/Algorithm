@@ -10,5 +10,6 @@ for i in range(1,N+1):
         count += 1
         if count == K:
             print(i)
+            quit()
 
 print(0)

@@ -25,7 +25,7 @@ for i in range(1,n+1):
 for j in range(m):
     robotNum, order, orderNum  = list(input().split())
     robotNum, orderNum = int(robotNum),int(orderNum)
-    print(robot[robotNum])
+    #print(robot[robotNum])
     nb, na = robot[robotNum][1], robot[robotNum][2]
     ob, oa = robot[robotNum][1], robot[robotNum][2]
 
@@ -39,9 +39,9 @@ for j in range(m):
             
             na +=  da
 
-            print(nb,na)
+            # print(nb,na)
             
-            print(db,da)
+            # print(db,da)
 
             
 

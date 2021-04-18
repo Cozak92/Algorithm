@@ -4,7 +4,7 @@ import sys
 S = sys.stdin.readline().rstrip()
 P = sys.stdin.readline().rstrip()
 
-print(S,P)
+#print(S,P)
 
 LEN = len(P)
 
@@ -16,7 +16,7 @@ end = LEN
 while end <= len(S):
 
 
-    print(S[start:end])
+    #print(S[start:end])
     if S[start:end] == P:
         print(1)
         quit()
