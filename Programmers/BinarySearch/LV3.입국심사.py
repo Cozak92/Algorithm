@@ -22,8 +22,5 @@ def solution(n, times):
             end = mid - 1
             answer = mid
 
-
-
-
    
     return answer
