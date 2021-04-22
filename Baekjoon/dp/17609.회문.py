@@ -13,7 +13,7 @@ def isPalindrome(word,start,end):
             start += 1
             end -= 1
 
-        else: #스킵구간
+        else: # 스킵구간
             leftCheck = isSmilarpalindrome(word,start + 1, end)
             rightCheck = isSmilarpalindrome(word,start, end - 1)
 
