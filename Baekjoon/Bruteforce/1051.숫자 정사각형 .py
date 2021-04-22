@@ -34,9 +34,5 @@ for i in range(n):
                         temp =(dist + 1) ** 2
                         ANS = max(temp,ANS)
                         
-if ANS == -INF:
-    print(1)       
-else:
-    print(ANS)
-            
+print(1 if ANS == -INF else ANS)
 
