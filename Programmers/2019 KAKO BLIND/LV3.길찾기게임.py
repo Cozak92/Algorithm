@@ -14,19 +14,24 @@
 
 from collections import defaultdict
 
+preorder = []
+postorder = []
+
 def indfs(cur,reversedTree,index):
-    print(cur, end="")
+    #print(cur, end="")
+    preorder.append(cur)
 
     for x in range(index+1,len(reversedTree)):
         
         if reversedTree[x][1][0] < reversedTree[cur][1][0]:
+            print(cur)
+            print("check")
             indfs(x,reversedTree,index+1)
-            break
-    for x in range(index+1,len(reversedTree)):
         
-        if reversedTree[x][1][0] > reversedTree[cur][1][0]:
+        elif reversedTree[x][1][0] > reversedTree[cur][1][0]:
             indfs(x,reversedTree,index+1)
             break
+    postorder.append(cur)
         
 
 
@@ -45,11 +50,12 @@ def solution(nodeinfo):
 
     reversedTree = sorted(tree.items(), key=lambda x: x[1][1], reverse=True)
 
-    print(reversedTree[6][1][0])
+    #print(reversedTree[6][1][0])
 
     indfs(reversedTree[0][0],reversedTree,0)
 
 
+    print(preorder)
     answer = [[]]
 
     return answer
