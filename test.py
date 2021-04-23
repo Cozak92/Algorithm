@@ -1,3 +1,5 @@
-n = input()
-a = list(map(int, n.split()))
-print(a[0])
+
+
+for i in range(5):
+    print(i)
+    i = 3
