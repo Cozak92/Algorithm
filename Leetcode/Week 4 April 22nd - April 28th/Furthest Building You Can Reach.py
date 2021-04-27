@@ -53,8 +53,8 @@ class Solution:
         for i in range(len(heights) - 1):
             gap = heights[i + 1] - heights[i]
             if gap > 0 : #gap이 0보다 크다는 뜻은 뒤 빌딩이 더 크다는 뜻
-                heapq.heappush(pq,gap) # 사다리에 태우는 숫자
-            if len(pq) > ladders:
+                heapq.heappush(pq,gap) # 사다리를 태우는 숫자
+            if len(pq) > ladders: #사다리의 한계를 넘었으면
                 bricks -= heapq.heappop(pq) # 가장 작은 갭만큼 벽돌에서 빼준다.
             if bricks < 0: # 벽돌이 0이 됐다면 더이상 진행못함
                 return i
