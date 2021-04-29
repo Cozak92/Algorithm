@@ -29,7 +29,7 @@ def solution(n, weak, dist):
 
             flag = True
 
-            for j in range(i): #각각의 값을 비교해서 하나다로 거리가 크면 순찰을 못도는것이므로 실패
+            for j in range(i): #각각의 값을 비교해서 하나라도 거리가 크면 순찰을 못도는것이므로 실패
                 if picked[j] > copyedDist[j]:
                     flag = False
                     break
