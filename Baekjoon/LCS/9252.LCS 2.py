@@ -21,8 +21,8 @@ for i in range(1,n1+1):
             dp[i][j] = max(dp[i-1][j],dp[i][j-1])
 
 
-for x in dp:
-    print(x)
+# for x in dp:
+#     print(x)
 
 print(dp[n1][n2])
 if dp[n1][n2] != 0:
