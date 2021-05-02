@@ -1,0 +1,1 @@
+r,c = list(map(int,list(input().split())))
