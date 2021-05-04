@@ -3,8 +3,6 @@ from itertools import combinations
 l,c = list(map(int,input().split()))
 vowel = ['a','e','i','o','u']
 arr = list(input().split())
-isUsed =[False for _ in range(c)]
-password = ""
 ans = 0
 arr.sort()
 
