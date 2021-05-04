@@ -18,7 +18,7 @@ for _ in range(t):
                 break
             else:
                 stack.pop()
-        print(stack)
+        #print(stack)
     if stack:
         print("NO")
         flag = False
