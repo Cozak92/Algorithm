@@ -15,7 +15,7 @@ const bfs = function(n,m,maps){
         
         dist = temp[2]
         if(x === n - 1 && y === m -1){
-            console.log(dist)
+
             ans = Math.min(ans,dist)
         }
 
@@ -47,7 +47,7 @@ function solution(maps) {
     if(answer === Number.MAX_VALUE){
         return -1
     }
-    console.log(answer)
+    return answer
 }
 
 solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]])
