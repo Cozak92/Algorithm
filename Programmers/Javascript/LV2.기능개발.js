@@ -7,14 +7,12 @@ function solution(progresses, speeds) {
                 if (progresse >= 100){
                     cnt += 1
                 }
-                else{
-                    
+                else{                  
                     break
-                }
-            
+                }           
             }
             answer.push(cnt)
-            console.log(cnt)
+
             for (var i = 0; i < cnt; i++){
                 progresses.shift()
                 speeds.shift()
