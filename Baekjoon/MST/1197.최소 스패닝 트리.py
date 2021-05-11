@@ -1,7 +1,7 @@
 import sys
 from collections import defaultdict
 INF = sys.maxsize
-sys.setrecursionlimit(10**9)
+sys.setrecursionlimit(10**6)
 
 def findRoot(x):
 
@@ -12,13 +12,13 @@ def findRoot(x):
     return findRoot(union[x])
 
 def uniona(a, b):
-    a = findRoot(a)
-    b = findRoot(b)
+    rootA = findRoot(a)
+    rootB = findRoot(b)
     
-    if b < a:
-        union[a] = b
+    if rootB < rootA:
+        union[rootA] = rootB
     else:
-        union[b] = a
+        union[rootB] = rootA
 
 
 
