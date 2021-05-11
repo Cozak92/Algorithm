@@ -31,7 +31,7 @@ while q:
 
         if 0 <= nx < n and 0 <= ny < m and not visited[nx][ny][wall]:
             if board[nx][ny] and not wall:
-                visited[nx][ny][wall] = True
+                visited[nx][ny][wall+1] = True
                 q.append((nx,ny,wall+1,dist+1))
             elif not board[nx][ny]:
                 visited[nx][ny][wall] = True
