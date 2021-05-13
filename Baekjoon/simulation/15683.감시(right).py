@@ -61,7 +61,7 @@ for temp in range(1<<(2*num)):
 
     val = 0
     for r in room2:
-        val += Counter(r)[0]
+        val += Counter(r)[0] #r.count(0)
     ans = min(ans,val)  
 
 print(ans)

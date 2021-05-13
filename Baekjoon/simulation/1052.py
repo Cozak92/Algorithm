@@ -39,7 +39,6 @@ if bottles<= targetBottles:
     print(0)
 else:
     while True:
-        print("ㅇ")
         if sol(n) <= targetBottles:
             print(n-bottles)
             break
