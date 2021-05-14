@@ -91,7 +91,7 @@ def fall():
     for i in range(n):
         for j in range(n):
             for k in t[i][j]:
-                if k % 5 == 0:
+                if not k % 5:
                     for l in range(8):
                         x = i + dx[l]
                         y = j + dy[l]
