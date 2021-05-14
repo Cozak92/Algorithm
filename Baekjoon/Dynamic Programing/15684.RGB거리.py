@@ -17,7 +17,7 @@ def dfs(index,color):
 
 
 import sys
-sys.setrecursionlimit(10**9)
+sys.setrecursionlimit(10**6)
 
 INF = sys.maxsize
 
