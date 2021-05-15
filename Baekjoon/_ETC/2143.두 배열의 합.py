@@ -75,9 +75,9 @@ ans = 0
 for i in range(n):
     for j in range(i, n):
         table[sum(listA[i:j+1])] += 1
-
+print(table)
 for i in range(m):
     for j in range(i, m):
-        ans += table[t - sum(listB[i:j+1])]
+        ans += table[t-sum(listB[i:j+1])]
 
 print(ans)
