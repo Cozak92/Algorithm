@@ -68,3 +68,4 @@ relative/path/to/dir/anotherfile
 *.exe
 *.out
 *.app
+.vscode/*.json
