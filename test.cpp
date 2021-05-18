@@ -1,26 +1,75 @@
-// #include <bits/stdc++.h>
 #include <iostream>
+
+#include <cstring> //memset
+
 using namespace std;
-#define FOR(i,m,n) for(int i=(m);i<(n);i++)
-#define REP(i,n) FOR(i,0,n)
-#define ALL(v) (v).begin(),(v).end()
-using ll = long long;
-// constexpr int INF = 0x3f3f3f3f;
-// constexpr long long LINF = 0x3f3f3f3f3f3f3f3fLL;
-// constexpr double EPS = 1e-8;
-// constexpr int MOD = 1000000007;
-// // constexpr int MOD = 998244353;
-// constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
-// constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
 
+ 
 
-int main(){
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+const int MAX = 100;
 
-    int n,m;
+ 
 
-    cin >> n >> m;
-    cout << n << m;
+int N;
+
+int operand[MAX]; //피연산자 집합
+
+long long cache[20 + 1][MAX]; //연산 결과인 0~20, idx
+
+ 
+
+long long numOfWays(int leftNum, int idx) //왼쪽에서부터 연산을 시작하므로 leftNum, idx는 여태까지 연산을 진행한 인덱스
+
+{
+
+        //기저 사례
+
+        if (leftNum < 0 || leftNum>20)
+
+               return 0;
+
+        if (idx == N - 2) //조건에 맞는가
+
+               return (leftNum == operand[N - 1]);
+
+ 
+
+        long long &result = cache[leftNum][idx];
+
+        if (result != -1)
+
+               return result;
+
+ 
+
+        result = 0;
+
+        //더하거나 빼는 경우
+
+        return result += (numOfWays(leftNum + operand[idx + 1], idx + 1) + numOfWays(leftNum - operand[idx + 1], idx + 1));
+
+}
+
+ 
+
+int main(void)
+
+{
+
+        cin >> N;
+
+ 
+
+        for (int i = 0; i < N; i++)
+
+               cin >> operand[i];
+
+       
+
+        memset(cache, -1, sizeof(cache));
+
+        cout << numOfWays(operand[0], 0) << endl;
+
+        return 0;
+
 }
