@@ -14,7 +14,6 @@ constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1,
 int n,m;
 int city[100][100];
 
-vector<int> candidate;
 int chikenNum,houseNum;
 vector<pair<int,int>> house;
 vector<pair<int,int>> chiken;
@@ -48,7 +47,7 @@ int main(){
 
     vector<bool> v(chikenNum - m, false);
 	v.insert(v.end(), m, true);
-    
+
     int ans = INF;
 
     do{

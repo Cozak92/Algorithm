@@ -23,13 +23,17 @@ int main(){
     cin >> n;
 
     REP(i,n) cin >> arr[i];
-    sort(arr,arr+n);
-    ll ans = arr[0];
-    FOR(i,1,n){
-        ans = ans % MOD;
-        ans *= arr[i-1];
+    if( n == 1){
+        cout << arr[0];
+        exit(0);
+    }
+    ll ans = min(arr[0],arr[1]);
+    ans = ans % MOD;
+    FOR(i,1,n -1){
+        ans *= min(arr[i-1],min(arr[i],arr[i+1]));
         ans = ans % MOD;
     }
-
+    ans *= min(arr[n-2],arr[n-1]);
+    ans = ans % MOD;
     cout << ans;
 }
