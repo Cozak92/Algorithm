@@ -11,6 +11,7 @@ constexpr int MOD = 1000000007;
 // constexpr int MOD = 998244353;
 constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
 constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
+const int MX = 1;
 
 
 int main(){
