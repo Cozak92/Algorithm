@@ -34,8 +34,8 @@ void bfs(){
                
                 while(q.size()){
 
-                    int x = q.back().first;
-                    int y = q.back().second;
+                    int x = q.front().first;
+                    int y = q.front().second;
                     q.pop();
                     isVisited[x][y] = true;
 
@@ -43,16 +43,12 @@ void bfs(){
                         
                         int nx = x + dx[k];
                         int ny = y + dy[k];
-                        cout << nx << " " << ny << endl;
                         if( 0 <= nx && nx < r && 0 <= ny && ny < c && field[nx][ny] != '#'){
                             if(!isVisited[nx][ny]){
-                                
                                 if(field[nx][ny] == 'o'){
-                                    cout << "isSheep" << endl;
                                     curSheeps++;
                                 } 
                                 else if(field[nx][ny] == 'v'){
-                                    cout << "isWolves" << endl;
                                     curWolves++;
                                 }
                                 isVisited[nx][ny] = true;
@@ -61,8 +57,6 @@ void bfs(){
                         }
                     }
                 }
-                cout << "CHECK" << endl;
-                cout << curSheeps << " " << curWolves << endl;
                 if(curSheeps > curWolves){
                     wolves -= curWolves;
                 }
