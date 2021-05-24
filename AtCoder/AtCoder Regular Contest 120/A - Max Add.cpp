@@ -19,4 +19,21 @@ int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+
+    int n;
+
+    cin >> n;
+    ll s = 0;
+    ll t = 0;
+    ll x = 0;
+    ll MAX = -1;
+    REP(i,n){
+        cin >> x; //ai
+        s += x; // a1 + a2 + a3 +.. + ai +.. + an
+        t += s; // (a1 + (a2 + a1) + (a1 + (a2 + a1 + ( a3 + a2 + a1)) + .... == 
+
+
+        MAX = max(MAX,x);
+        cout << t + MAX * (i + 1) << "\n"; // MAX * n + (a1 + (a2 + a1) + (a1 + (a2 + a1 + ( a3 + a2 + a1)) + ....
+    }
 }

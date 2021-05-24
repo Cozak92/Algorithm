@@ -13,8 +13,8 @@ for c in s:
         if not stack or stack[-1] != pair[c]:
             ans = 0
             break
-        if prev == pair[c]:
-            ans += cur # 따라서 브라켓이 하나 끝날때마다 문제 지시대로 현재 겹쳐있는 값을 더해준다.
+        if prev == pair[c]:  # if prev == "(" && c == ")" 괄호가 닫혔다는 의미 // 생각해보자 prev == ")" && c == "]" 계산 되면 안됨
+            ans += cur # 괄호가 닫힐 때마다 문제 지시대로 현재 겹쳐있는 값을 더해준다.
         stack.pop()
         cur //= mult[c] #왜 나눌까? 왜냐면 해당 브라켓이 끝났으므로 해당 브라켓 값만큼 나눠주어서 더 이상 곱하기 연산이 안들어가게 한다.
     prev = c
