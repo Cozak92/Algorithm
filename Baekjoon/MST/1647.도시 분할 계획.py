@@ -23,7 +23,7 @@ def makeUnion(a,b):
 
 
 n,m = li()
-union = x for x in range(n+1)
+union = [x for x in range(n+1)]
 graph = sorted([li() for _ in range(m)], key= lambda x : x[2])
 
 ans = 0
