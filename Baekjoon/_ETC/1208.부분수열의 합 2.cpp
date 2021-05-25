@@ -13,11 +13,27 @@ constexpr int MOD = 1000000007;
 // constexpr int MOD = 998244353;
 constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
 constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
-const int MX = 1;
+const int MX = 42;
 
+unordered_map<int,int> map;
+int arr[MX];
+int SUM[mx];
 
 int main(){
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+    int n,s;
+    cin >> n >> s;
+
+    REP(i,n) cin >> arr[i];
+    REP(i,n-1) SUM[i + 1] = SUM[i] + arr[i];
+
+    int ans = 0;
+    REP(i,n){
+        
+        ans += map[SUM[i]-s];
+        map[SUM[i]]++;
+    }
+
 }
