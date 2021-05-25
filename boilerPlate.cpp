@@ -5,7 +5,7 @@ using namespace std;
 #define ALL(v) (v).begin(),(v).end()
 #define what_is(x) cerr << #x << " is " << x << "\n"
 using ll = long long;
-using pii = pair<int,int>
+using pii = pair<int,int>;
 constexpr int INF = 0x3f3f3f3f;
 constexpr long long LINF = 0x3f3f3f3f3f3f3f3fLL;
 constexpr double EPS = 1e-8;
