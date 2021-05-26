@@ -18,7 +18,9 @@ for i in range(n):
         else:
             ans += 1
 def upd(x,y,Dir):
+    # print(Dir)
     Dir = Dir % 4
+    # print(Dir)
     while 1:
         x += dx[Dir]
         y += dy[Dir]

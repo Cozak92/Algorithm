@@ -15,7 +15,7 @@ constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
 constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
 const int MX = 1000010;
 
-const int N = 1e5;  // limit for array size
+const int N = 100000;  // limit for array size
 int n;  // array size
 int t[2 * N];
 
@@ -42,7 +42,7 @@ int main() {
   scanf("%d", &n);
   for (int i = 0; i < n; ++i) scanf("%d", t + n + i);
   build();
-  modify(0, 1);
-  printf("%d\n", query(3, 11));
+  // modify(0, 0);
+  printf("%d\n", query(1, 3));
   return 0;
 }
