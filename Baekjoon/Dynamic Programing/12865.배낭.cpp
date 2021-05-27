@@ -26,7 +26,6 @@ int main(){
     cin >> n >> k;
 
     FOR(i,1,n+1) cin >> items[i][0] >> items[i][1];
-
     FOR(i,1,n+1){
         REP(j,k+1){
             if(j >= items[i][0]){ // 들어갈수잇으면
@@ -35,6 +34,8 @@ int main(){
             else dp[i][j] = dp[i-1][j];
         }
     }
+
+
     cout << dp[n][k];
 
 }
