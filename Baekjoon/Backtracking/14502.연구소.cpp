@@ -19,53 +19,54 @@ int n,m;
 int lab[MX][MX];
 int lab2[MX][MX];
 int ans = -INF;
+int limit = 0;
 queue<pii> virus;
 
-void bfs(int lab2[][MX]){
-    bool isVisited[MX][MX];
+void bfs(){
+    int temp[MX][MX];
+    REP(i,n)
+    REP(j,m) temp[i][j] = lab[i][j];
     int x,y,nx,ny;
-    while(!virus.empty()){
-        x = virus.front().first;
-        y = virus.front().second;
-        virus.pop();
+    queue<pii> q = virus;
+    
+    while(!q.empty()){
+        x = q.front().first;
+        y = q.front().second;
+        q.pop();
 
         REP(i,4){
             nx = x + dx[i];
             ny = y + dy[i];
-            if(0 <= nx && nx < n && 0 <= ny && ny < m && lab2[nx][ny] == 0){
-                lab2[nx][ny] = 2;
-                virus.push(make_pair(nx,ny));
+            if(0 <= nx && nx < n && 0 <= ny && ny < m && temp[nx][ny] == 0){
+                temp[nx][ny] = 2;
+                q.push(make_pair(nx,ny));
             }
         }
 
     }
+    int cnt = 0;
+    REP(i,n)
+    REP(j,m) if(temp[i][j] == 0) cnt++;
+    
+    ans = max(ans,cnt);
 
 }
 
-void build(int tot,int walls){
-
-    if(walls = 3){
-        REP(i,n)
-        REP(j,m) lab2[i][j] = lab[i][j];
-        bfs(lab2);
-        int cnt = 0;
-        REP(i,n)
-        REP(j,m) if(lab2[i][j] == 0) cnt++;
-        ans = max(ans,cnt);
+void build(int walls){
+    if(walls == 3){
+        bfs();
         return;
     }
-    
-    int x = tot / 8;
-    int y = tot % 8;
-
-    if(lab[x][y] == 0){
-        for(int i = tot + 1; i < 64; i++){
-            lab[x][y] = 1;
-            build(i,walls + 1);
-            lab[x][y] = 0;
+    REP(i,n)
+    REP(j,m){
+        if(lab[i][j] == 0){
+            lab[i][j] = 1;
+            build(walls + 1);
+            lab[i][j] = 0;
         }
     }
-    else build(tot + 1, walls);
+    
+   
 
 }
 
@@ -78,8 +79,8 @@ void solve(){
          if(lab[i][j] == 2) virus.push(make_pair(i,j));
     }
 
-    build(0,0);
-
+    build(0);
+    cout << ans;
 }
 
 
@@ -89,4 +90,5 @@ int main(){
     cout.tie(NULL);
 
     solve();
+    
 }
