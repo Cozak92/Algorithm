@@ -15,6 +15,9 @@ constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
 constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
 const int MX = 52;
 
+
+int ccw[] = {0,1,2,3};
+int cw[] = {3,0,1,2};
 int room[MX][MX];
 int r,c,t;
 vector<pii> air;
@@ -54,49 +57,71 @@ void spread(){
 
 void doAir(){
     //up
+    int copiedRoom[MX][MX];
 
+    REP(i,r)
+    REP(j,r) copiedRoom[i][j] = room[i][j];
     int fx = air[0].first;
-    int fy = air[0].second;
+    int fy = air[0].second + 1;
+
+    room[fx][fy] = 0;
+
+    REP(i,4){
+        while(1){
+            int nx = fx + dx[ccw[i]];
+            int ny= fy + dy[ccw[i]];
+
+            if(ny == fy && nx == fx) break;
+            if(!(0<= nx && nx < r && 0 <= ny && ny < c)) break;
+            room[nx][ny] = copiedRoom[fx][fy];
+            fx = nx;
+            fy = ny;
+
+        }
+    }
+
+
+
     int sx = air[1].first;
     int sy = air[1].second;
 
-    for(int x = fx; x > 0; x--){ // |
-        if(x == fx) room[x - 1][fy] = 0; 
-        else room[x][fy] = room[x - 1][fy];
-    }
-    // ㅡ
-    for(int y = fy; y < c - 1; y++) room[0][y] = room[0][y + 1];
-    // |
-    for(int x = 0; x < fx; x++) room[x][c - 1] = room[x + 1][c - 1];
-    // ㅡ
-    for(int y = c - 1; y > fy + 1; y--) room[fx][y] = room[fx][y - 1];
-    room[fx][fy + 1] = 0;
-
-    // cout << "--------위---------\n";
-    // REP(i,r){
-    //     REP(j,c){
-    //         cout << room[i][j] << " ";
-    //     }
-    //     cout << "\n";
+    // for(int x = fx; x > 0; x--){ // |
+    //     if(x == fx) room[x - 1][fy] = 0; 
+    //     else room[x][fy] = room[x - 1][fy];
     // }
+    // // ㅡ
+    // for(int y = fy; y < c - 1; y++) room[0][y] = room[0][y + 1];
+    // // |
+    // for(int x = 0; x < fx; x++) room[x][c - 1] = room[x + 1][c - 1];
+    // // ㅡ
+    // for(int y = c - 1; y > fy + 1; y--) room[fx][y] = room[fx][y - 1];
+    // room[fx][fy + 1] = 0;
 
-    // down
+    // // cout << "--------위---------\n";
+    // // REP(i,r){
+    // //     REP(j,c){
+    // //         cout << room[i][j] << " ";
+    // //     }
+    // //     cout << "\n";
+    // // }
 
-    for(int x = sx; x < r; x++){
-        if(x == sx) room[x + 1][sy] = 0;
-        else room[x][sy] = room[x + 1][sy];
-    }
-    for(int y = 0; y < c - 1; y++) room[r - 1][y] = room[r - 1][y + 1];
-    for(int x = r - 1; x > fx; x--) room[x][c - 1] = room[x - 1][c - 1];
-    for(int y = c - 1; y > sy + 1; y--) room[sx][y] = room[sx][y - 1];
-    room[sx][sy + 1] = 0;
-    // cout << "--------아래---------\n";
-    // REP(i,r){
-    //     REP(j,c){
-    //         cout << room[i][j] << " ";
-    //     }
-    //     cout << "\n";
+    // // down
+
+    // for(int x = sx; x < r; x++){
+    //     if(x == sx) room[x + 1][sy] = 0;
+    //     else room[x][sy] = room[x + 1][sy];
     // }
+    // for(int y = 0; y < c - 1; y++) room[r - 1][y] = room[r - 1][y + 1];
+    // for(int x = r - 1; x > fx; x--) room[x][c - 1] = room[x - 1][c - 1];
+    // for(int y = c - 1; y > sy + 1; y--) room[sx][y] = room[sx][y - 1];
+    // room[sx][sy + 1] = 0;
+    // // cout << "--------아래---------\n";
+    // // REP(i,r){
+    // //     REP(j,c){
+    // //         cout << room[i][j] << " ";
+    // //     }
+    // //     cout << "\n";
+    // // }
 
     
 }
