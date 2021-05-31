@@ -10,4 +10,5 @@ dx8 = [0, -1, -1, -1, 0, 1, 1, 1]
 
 def li(): return list(map(int,input().split()))
 
-
+# s = list(input().split())
+print(len(list(input().split())))
