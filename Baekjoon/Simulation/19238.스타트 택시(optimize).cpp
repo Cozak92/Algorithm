@@ -27,14 +27,15 @@ pii taxi;
 
 struct info{
     int x,y,val,idx;
-
-    friend bool operator < (const info& a, const info& b){
-        if(a.val < b.val) return true;
-        if(a.val > b.val) return false;
-        if(a.x < b.x) return true;
-        if(a.x > b.x) return false;
-        if(a.y < b.y) return true;
-        return false;
+};
+struct cmp{
+    bool operator()(info &a, info &b){
+        if(a.val==b.val){
+            if(a.y==b.y)
+                return a.x> b.x;
+            return a.y > b.y;
+        }
+        return a.val > b.val;
     }
 };
 
@@ -59,7 +60,7 @@ void findReqFuel(int a,int b, int xx, int yy,int index){
             int nx = x + dx[i];
             int ny = y + dy[i];
 
-            if(0 < nx && nx <= n && 0 < ny && ny <= n && board[nx][ny] != -1){
+            if(0 < nx && nx <= n && 0 < ny && ny <= n && board[nx][ny] != 1){
                 if(!isVisited[nx][ny]){
                      q.push(make_pair(dist + 1, make_pair(nx,ny)));
                      isVisited[nx][ny] = true;
@@ -73,7 +74,7 @@ void findReqFuel(int a,int b, int xx, int yy,int index){
 int findMinDist(int a,int b){
     memset(isVisited,false,sizeof(isVisited));
     queue<info> q;
-    priority_queue<info> pq;
+    priority_queue<info,vector<info>,cmp> pq;
     int arrivedAt = -1;
     info temp;
     temp.x = a;
@@ -91,14 +92,13 @@ int findMinDist(int a,int b){
             temp.x = x;
             temp.y = y;
             temp.val = dst;
-            debug(dst);
             temp.idx = customerIndex[x][y];
             pq.push(temp);
         }
         REP(i,4){
             int nx = x + dx[i];
             int ny = y + dy[i];
-            if(0 < nx && nx <= n && 0 < ny && ny <= n){
+            if(0 < nx && nx <= n && 0 < ny && ny <= n && board[nx][ny] != 1){
                 if(!isVisited[nx][ny]){
                     isVisited[nx][ny] = true;
                     temp.x = nx;
@@ -116,9 +116,11 @@ int findMinDist(int a,int b){
 
     if(!pq.empty()){
         arrivedAt = pq.top().idx;
+
         fuel -= pq.top().val;
-        taxi.first = pq.top().x;
-        taxi.second = pq.top().y;
+        taxi.first = customers[arrivedAt][2];
+        taxi.second = customers[arrivedAt][3];
+        pq.pop();
     }
     return arrivedAt;
     
@@ -133,9 +135,7 @@ void solve(){
     FOR(i,1,n+1)
     FOR(j,1,n+1){
          cin >> board[i][j];
-         if(board[i][j] == 1){
-              board[i][j] = -1;
-         }
+
     }
     int r,c; cin >> r >> c;
     taxi = {r,c};
@@ -148,8 +148,8 @@ void solve(){
 
     REP(i,m){
         int curIndex = findMinDist(taxi.first,taxi.second);
-        debug(fuel);
-        debug(reqFuel[curIndex]);
+        // debug(fuel);
+        // debug(reqFuel[curIndex]);
         if(curIndex == -1){
             fuel = curIndex;
             break;
@@ -159,11 +159,11 @@ void solve(){
             isCompleted[curIndex] = true;
         }
         else{
-            fuel = - 1;
+            fuel = -1;
             break;
         }
 
-        debug(fuel);
+        // debug(fuel);
     }
     cout << fuel;
 
