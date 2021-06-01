@@ -31,9 +31,9 @@ struct info{
 struct cmp{
     bool operator()(info &a, info &b){
         if(a.val==b.val){
-            if(a.y==b.y)
-                return a.x> b.x;
-            return a.y > b.y;
+            if(a.x==b.x)
+                return a.y> b.y;
+            return a.x > b.x;
         }
         return a.val > b.val;
     }
@@ -118,9 +118,10 @@ int findMinDist(int a,int b){
         arrivedAt = pq.top().idx;
 
         fuel -= pq.top().val;
+
         taxi.first = customers[arrivedAt][2];
         taxi.second = customers[arrivedAt][3];
-        pq.pop();
+
     }
     return arrivedAt;
     
@@ -148,8 +149,7 @@ void solve(){
 
     REP(i,m){
         int curIndex = findMinDist(taxi.first,taxi.second);
-        // debug(fuel);
-        // debug(reqFuel[curIndex]);
+
         if(curIndex == -1){
             fuel = curIndex;
             break;
