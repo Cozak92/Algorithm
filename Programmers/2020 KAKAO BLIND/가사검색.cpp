@@ -16,68 +16,59 @@ constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1,
 const int MX = 30;
 
 struct Trie{
-    Trie* Node[MX];
-    bool isFinished;
-    bool hasChild;
+    Trie* Node[26];
     int nodeCount;
     Trie(){
         memset(Node,NULL,sizeof(Node));
-        hasChild = isFinished = false;
         nodeCount = 1;
     }
 
-    void insert(string s,int len, int index){
+    void insert(const char *str){
         
-        if(index == len){
-            isFinished = true;
+        if(*str == 0){
             return;
         }
         
-        int next = s[index] - 'a';
+        int next = *str - 'a';
         
         if(Node[next] == NULL){
             Node[next] = new Trie();
-            hasChild = true;
         }
         else Node[next]->nodeCount++;
         
-        Node[next]->insert(s,len,index+1);
+        Node[next]->insert(str + 1);
     }
 
-    int find(string s,int len, int index){
-        if(index == len){
-            if(isFinished) return 1;
-            else return 0;
-        }
-        if(s[index] == '?'){
+    int find(const char *str){
+    
+        if(*str == '?'){
             int temp = 0;
-           REP(i,27){
+            REP(i,26){
                if(Node[i] != NULL) temp += Node[i]->nodeCount;
-               
            }
            return temp;
         }
       
-        int next = s[index] - 'a';
+        int next = *str - 'a';
         if(Node[next] == NULL) return 0;
-        return Node[next]->find(s,len,index+1);
-                
+        return Node[next]->find(str + 1);
     }
 };
 
 
 vector<int> solution(vector<string> words, vector<string> queries) {
     vector<int> answer;
-    Trie* trie[10010];
-    Trie* reverseTrie[10010];
+    Trie *trie[10010];
+    Trie *reverseTrie[10010];
     for(auto e : words){
         int len = e.size();
 
         if(trie[len] == NULL) trie[len] = new Trie();
-        trie[len]->insert(e,e.size(),0);
+        trie[len]->insert(e.c_str());
+
         if(reverseTrie[len] == NULL) reverseTrie[len] = new Trie();
         reverse(e.begin(),e.end());
-        reverseTrie[len]->insert(e,e.size(),0);
+        reverseTrie[len]->insert(e.c_str());
     }
     for(auto e : queries){
         int len = e.size();
@@ -85,15 +76,15 @@ vector<int> solution(vector<string> words, vector<string> queries) {
         if(e[0] == '?'){
             reverse(e.begin(),e.end());
             if(reverseTrie[len] == NULL) answer.push_back(0);
-            else answer.push_back(reverseTrie[len]->find(e,e.size(),0));
+            else answer.push_back(reverseTrie[len]->find(e.c_str()));
         }
         else{
             if(trie[len] == NULL) answer.push_back(0);
-            else answer.push_back(trie[len]->find(e,e.size(),0));
+            else answer.push_back(trie[len]->find(e.c_str()));
         }
         
     }
-
+    // for(auto e : answer) cout << e << "\n";
     return answer;
 }
 
