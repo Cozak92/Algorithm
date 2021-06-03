@@ -1,70 +1,29 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
- 
-int n, m, k;
-int parents[51];
-vector<int> know;
-vector<vector<int> > v(50);
- 
- 
-int Find(int x) {
-    if (parents[x] == x) return x;
-    return x = Find(parents[x]);
+#define FOR(i,m,n) for(int i=(m);i<(n);i++)
+#define REP(i,n) FOR(i,0,n)
+#define ALL(v) (v).begin(),(v).end()
+#define debug(x) cerr << #x << " is " << x << "\n"
+using ll = long long;
+using pii = pair<int,int>;
+constexpr int INF = 0x3f3f3f3f;
+constexpr long long LINF = 0x3f3f3f3f3f3f3f3fLL;
+constexpr double EPS = 1e-8;
+constexpr int MOD = 1000000007;
+// constexpr int MOD = 998244353;
+constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
+constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
+const int MX = 10;
+
+
+
+void solve(){
+  cout << (1 << 'A' - 'A');
 }
- 
-void Union(int x, int y) {
-    x = Find(x);
-    y = Find(y);
-    parents[x] = y;
-}
- 
- 
- 
-int main(void) {
-    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
-    
-    cin >> n >> m >> k;
- 
-    while (k--) {
-        int t;
-        cin >> t;
-        know.push_back(t);
-    }
- 
-    for (int i = 1; i <= n; i++) parents[i] = i;
- 
-    for (int i = 0; i < m; i++) {
-        int p;
-        cin >> p;
-        int num;
-        int prev;
-        for (int j = 0; j < p; j++) {
-            if (j >= 1) {
-                prev = num;
-                cin >> num;
-                Union(prev, num);
-            }
-            else {
-                cin >> num;
-            }
-            v[i].push_back(num);
-        }
-    }
-    for (auto& list : v) {
-        bool flag = false;
-        for (auto& person : list) {
-            if (flag) break;
-            for (auto& t : know) {
-                if (Find(person) == Find(t)) {
-                    flag = true;
-                    break;
-                }
-            }
-        }
-        if (flag)m--;
-    }
-    cout << m;
- 
-    return 0;
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    solve();
 }
