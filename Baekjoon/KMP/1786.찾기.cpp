@@ -80,7 +80,6 @@ vector<int> getPi(string search){
             matched = pi[matched - 1];
         }
         if (search[start] == search[matched]) {
-
 				pi[start] = ++matched;
 			}
 		}
@@ -102,7 +101,7 @@ vector<int> kmp(string src, string search){
         }
 
         if(src[i] == search[matched]){
-            if(matched == n -1){
+            if(matched == m - 1){
                 ret.push_back(i - m  +1);
                 matched = pi[matched];
             }
