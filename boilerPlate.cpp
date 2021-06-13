@@ -18,8 +18,7 @@ const int MX = 10;
 
 
 void solve(){
-  //11
-  //2
+
 }
 
 int main(){

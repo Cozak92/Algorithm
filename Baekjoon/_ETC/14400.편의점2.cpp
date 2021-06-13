@@ -13,15 +13,30 @@ constexpr int MOD = 1000000007;
 // constexpr int MOD = 998244353;
 constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
 constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
-const int MX = 10;
+const int MX = 100010;
 
-
+bool cmp(const pair<int, int> &l, const pair<int, int> &r) { return l.second < r.second; }
 
 void solve(){
-  int a,b;
-  cin >> a >> b;
-  cout << a + b << "\n";
-  cout << (1 << 'A' - 'A');
+    int n; cin >> n; 
+    vector<pii> arr(n);
+    REP(i,n){
+        int a,b;
+        cin >> a >> b;
+        arr[i] = {a,b};
+    }
+
+    sort(ALL(arr));
+    int l = arr[(n-1)/2].first;
+    sort(ALL(arr),cmp);
+    int r = arr[(n-1)/2].second;
+    ll ans = 0;
+    REP(i,n){
+        ans += abs(l - arr[i].first) + abs(r - arr[i].second);
+    }
+
+    cout << ans;
+    
 }
 
 int main(){
