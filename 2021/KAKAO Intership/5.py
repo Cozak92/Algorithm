@@ -1,4 +1,7 @@
 from collections import defaultdict
+def sum():
+    
+
 def solution(k, num, links):
     answer = 0
     SUM = sum(num)

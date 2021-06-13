@@ -28,6 +28,7 @@ function solution(weights,head2head){
                 if(weights[i] < weights[j]){
                     b++
                 }
+                
             }
         }
         beat.push(b)
@@ -37,7 +38,6 @@ function solution(weights,head2head){
         players.push(new Player(i,winRate[i],beat[i],weights[i]) )
     }
 
-    console.log(players)
 
     players.sort(function(a,b){
         if(a.winRate === b.winRate){
@@ -58,7 +58,9 @@ function solution(weights,head2head){
         }
         
     })
-    console.log(players)
+
+    return players
+
 
 
 
