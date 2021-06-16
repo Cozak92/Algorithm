@@ -16,7 +16,7 @@ constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1,
 const int MX = 110;
 bool isSqr[MX * MX];
 
-void solve(){
+void solve(){ //1
     int n; cin >> n;
     bool ok = true;
     for(int i = 1; i * i <= MX * MX; i++) isSqr[i * i] = true;
