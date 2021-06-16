@@ -13,11 +13,24 @@ constexpr int MOD = 1000000007;
 // constexpr int MOD = 998244353;
 constexpr int dy[] = {1, 0, -1, 0}, dx[] = {0, -1, 0, 1};
 constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1, 1, 1};
+
 const int MX = 10;
 
-
+ll dp[MX][MX];
 
 void solve(){
+  int h,n; cin >> h >> n;
+  if(h == n){cout << 1; return;}
+  if(h > n) swap(h,n);
+  for(int i = h; i <=n; i++) dp[h][i] = 1;
+
+  for(int i = h+1; i<=n; i++)
+  for(int j = h+1; j<=n; j++){
+      if(i <= j) dp[i][j] = dp[i-1][j] + dp[i][j-1];
+  }
+
+  cout << dp[n][n];
+
 
 }
 
