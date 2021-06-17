@@ -3,7 +3,7 @@ from collections import deque
 input = sys.stdin.readline
 dx = [0,0,1,-1]
 dy = [1,-1,0,0]
-
+#11
 def bfs(cabbage):
     global field
     cnt = 0
