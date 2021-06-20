@@ -5,7 +5,6 @@ from collections import defaultdict
 def solution(S, C):
     dicts = defaultdict(int)
     names = []
-    realName = ""
     ans = ""
 
 
