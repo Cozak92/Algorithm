@@ -40,7 +40,7 @@ void make(){
     parent[1] = 1;
     FOR(j,1,LOG){
         FOR(v,1,n+1){
-            up[v][j] = up[ up[v][j - 1] ][j - 1];
+            up[v][j] = up[ up[v][j - 1] ][j - 1]; //sparse
         }
     }
 }
