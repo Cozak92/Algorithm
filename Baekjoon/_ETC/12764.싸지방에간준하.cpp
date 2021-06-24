@@ -38,7 +38,7 @@ void solve(){
 
     REP(i,n){
         while (!occupiedSeat.empty()){ 
-            if(-occupiedSeat.top().first <= people[i].start){ // 가장 빨리 끝나는 시간이 끝남 사용중인 자리가 끝났다는 뜻
+            if(-occupiedSeat.top().first <= people[i].start){ // 가장 빨리 끝나는 시간이 끝남 / 사용중인 자리가 끝났다는 뜻
                 unoccupiedSeat.insert(occupiedSeat.top().second); // 끝난 자리를 반환;
                 occupiedSeat.pop();
             }
