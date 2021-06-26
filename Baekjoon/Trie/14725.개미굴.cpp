@@ -16,7 +16,7 @@ constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1,
 const int MX = 1;
 
 
-struct Trie{
+struct Trie{ //1
     map<string,Trie*> child;
 
     Trie(){}
@@ -44,7 +44,7 @@ struct Trie{
 
 };
 
-void solve(){
+void solve(){ //2
     int n; cin >> n;
     Trie* root =new Trie();
 
