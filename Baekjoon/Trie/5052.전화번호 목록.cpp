@@ -17,7 +17,7 @@ const int MX = 10;
 
 int t,n;
 
-struct Trie{
+struct Trie{ //1
   Trie* Node[MX];
   bool isFinished;
   bool hasChild;
@@ -53,7 +53,7 @@ struct Trie{
   }
 };
 
-bool solve(){
+bool solve(){ //2 
   cin >> n;
   vector<string> arr;
   Trie* trie = new Trie();
@@ -72,7 +72,7 @@ bool solve(){
 
 }
 
-int main(){
+int main(){ //3
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
