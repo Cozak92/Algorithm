@@ -8,7 +8,6 @@ for j in range(19): #열 기준으로 탐색
         if board[i][j] != 0:
             
             finder = board[i][j]
-            #print("i:" ,i,"j:",j)
             for k in range(8):
                 cnt = 1
                 nx = i + dx[k]
@@ -26,7 +25,6 @@ for j in range(19): #열 기준으로 탐색
                     cnt += 1
                     nx += dx[k]
                     ny += dy[k]
-                #print("cnt:",cnt)
                 if cnt == 5:
                     print(finder)
                     print(i+1,j+1)
