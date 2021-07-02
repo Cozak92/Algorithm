@@ -14,17 +14,17 @@ res = swap = num = max_I = 0
 
 for appl in appliance:
 
-    if appl in multitap: #해당 전자제품이 멀티탭에 꽂혀있음
+    if appl in multitap: 
         pass
-    elif 0 in multitap: #만약 멀티탭에 빈 공간이 남아있다면 꽂아줌
+    elif 0 in multitap: 
         multitap[multitap.index(0)] = appl
  
     else:
         for app in multitap:
-            if app not in appliance[num:]: #만약 꽂혀있는 전자제품이 이후에 안쓰면 바로 뽑아버린다
+            if app not in appliance[num:]: 
                 swap = app
                 break
-            elif appliance[num:].index(app) > max_I: # 리스트에 잇다면 꽂혀있는 전자제품 중에 쓰이는 가장 나중에 것을 뽑아버린다.
+            elif appliance[num:].index(app) > max_I: 
                 max_I = appliance[num:].index(app)
                 swap = app
         multitap[multitap.index(swap)] = appl
