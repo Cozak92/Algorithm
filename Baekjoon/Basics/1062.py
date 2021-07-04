@@ -12,7 +12,7 @@ def dfs(start, N, K, lettersNum):
     if lettersNum == K :    
 
         for i in range(0,N):
-            if wordCount[i] & learnedLetters == wordCount[i]: #단어와 지금까지 배웠던 글자 체크 , 같다면 해당 문자를 읽을수 있다는 뜻
+            if wordCount[i] & learnedLetters == wordCount[i]: 
                 ret += 1
 
             
