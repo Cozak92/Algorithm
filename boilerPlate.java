@@ -2,7 +2,9 @@ import java.io.*;
 import java.util.*;
 
 
-public class test {
+public class boilerPlate {
+  static int stoi(String s) { return Integer.parseInt(s);}
+  static final int INF = 987654321;
 
   public void solve(){
 
