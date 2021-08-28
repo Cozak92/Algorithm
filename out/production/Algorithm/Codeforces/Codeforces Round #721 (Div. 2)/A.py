@@ -1,0 +1,25 @@
+import sys
+INF = sys.maxsize
+input = sys.stdin.readline
+sys.setrecursionlimit(10**6)
+MOD = 1000000007
+dy = [1, 0, -1, 0]
+dx = [0, -1, 0, 1]
+dy8 = [1, 1, 0, -1, -1, -1, 0, 1]
+dx8 = [0, -1, -1, -1, 0, 1, 1, 1]
+
+def li(): return list(map(int,input().split()))
+
+
+t = int(input())
+
+for i in range(t):
+    n = int(input())
+    n = bin(n)[2:]
+    len(n)
+    target = "1"
+    for i in range(len(n)-1):
+        target += "0"
+    
+    ans = int(target,2) -1
+    print(ans)
