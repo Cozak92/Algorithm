@@ -3,7 +3,7 @@ package AtCoder.AtCoderBeginnerContest216;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class B {
 
   static int N;
   static int stoi(String s) { return Integer.parseInt(s);}

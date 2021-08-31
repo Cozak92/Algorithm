@@ -3,7 +3,7 @@ package AtCoder.AtCoderBeginnerContest216;
 import java.io.*;
 import java.util.*;
 
-public class poong {
+public class A {
 
     static int X,Y;
     static int stoi(String s) { return Integer.parseInt(s);}
