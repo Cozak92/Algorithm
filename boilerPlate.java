@@ -20,6 +20,5 @@ public class boilerPlate {
     bw.close();
     br.close();
 
-    System.out.println("Hello World");
   }
 }
