@@ -1,9 +1,5 @@
 package Programmers.WeeklyChallenge;
 
-
-
-import AtCoder.AtCoderBeginnerContest216.A;
-
 import java.util.*;
 
 class Weekly9 {

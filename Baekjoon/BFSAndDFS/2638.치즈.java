@@ -1,11 +1,11 @@
-
+package Baekjoon.BFSAndDFS;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
+class Baekjoon2638 {
 
   static class Pair {
     private int x, y;
