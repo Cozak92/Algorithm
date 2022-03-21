@@ -21,56 +21,40 @@ constexpr int dy8[] = {1, 1, 0, -1, -1, -1, 0, 1}, dx8[] = {0, -1, -1, -1, 0, 1,
 const int MX = 10;
 
 
-bool isValidated(string s) {
-    stack<char> stack;
-
-    for (char c: s) {
-        if (c == '(') {
-            stack.push(c);
-        }
-        if (c == '[') {
-            stack.push(c);
-        }
-        if (c == ')') {
-            if (!stack.empty() && stack.top() == '(') {
-                stack.pop();
-            } else {
-                return false;
-            }
-        }
-        if (c == ']') {
-            if (!stack.empty() && stack.top() == '[') {
-                stack.pop();
-            } else {
-                return false;
-            }
-        }
-    }
-    return true;
-}
-
 int calString(string s) {
     stack<char> stack;
-    int num, top = 1;
     long long result = 0;
+    bool isPossible = true;
+    int num = 1;
 
     REP(i, s.size()) {
         if (s[i] == '(') {
 
             num *= 2;
 
-            stack.push('(');
+            stack.push(s[i]);
 
         } else if (s[i] == '[') {
 
             num *= 3;
 
-            stack.push('[');
+            stack.push(s[i]);
+
+        } else if (s[i] == ')' && (stack.empty() || stack.top() != '(')) {
+
+            isPossible = false;
+
+            break;
+
+        } else if (s[i] == ']' && (stack.empty() || stack.top() != '[')) {
+
+            isPossible = false;
+
+            break;
 
         } else if (s[i] == ')') {
 
             if (s[i - 1] == '(')
-
                 result += num;
 
             stack.pop();
@@ -80,16 +64,20 @@ int calString(string s) {
         } else if (s[i] == ']') {
 
             if (s[i - 1] == '[')
-
                 result += num;
 
             stack.pop();
 
             num /= 3;
         }
+
     }
 
-    return result;
+    if (!isPossible || !stack.empty())
+        return 0;
+    else
+        return result;
+
 }
 
 
@@ -97,12 +85,7 @@ void solve() {
     string aaaa;
     cin >> aaaa;
 
-    if (isValidated(aaaa)) {
-        cout << calString(aaaa);
-    } else {
-        cout << 0;
-    }
-
+    cout << calString(aaaa);
 
 }
 
