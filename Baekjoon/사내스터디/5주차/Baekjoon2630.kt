@@ -5,7 +5,10 @@ import java.util.*
 object Baekjoon2630 {
 
     fun recursive(k: Int){
-
+        // 왼쪽 0,0 ~ k/2, k/2
+        // 오른쪽위 0,k/2 ~ k/2, k
+        // 왼쪽아래 k/2,0 ~ k,k/2
+        // 오른쪽아래 k/2,k/2 ~ k,k
 
 
     }
